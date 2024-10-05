@@ -100,6 +100,16 @@ Which should result in the following response:
 }
 ```
 
+### Cleanup
+
+After deployment, if you want to remove deployed resources like AWS Lambda function or API Gateway attached to the function or any other resources attached to this deployment, simply run `destroy` command:
+
+```
+npm run destroy:dev
+```
+
+Under the hood it uses `serverless destroy --stage dev` command to deploy to dev environment. It will remove every resources from the specified environment.
+
 ### Local development
 
 The easy and quick way to develop and test your function is to use the `serve` command:

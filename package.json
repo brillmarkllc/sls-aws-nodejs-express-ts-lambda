@@ -7,7 +7,9 @@
     "serve": "npx serverless offline start",
     "dev": "npx serverless dev",
     "deploy:dev": "npx serverless deploy --stage dev",
-    "deploy:prod": "npx serverless deploy --stage prod"
+    "deploy:prod": "npx serverless deploy --stage prod",
+    "destroy:dev": "npx serverless remove --stage dev",
+    "destroy:prod": "npx serverless remove --stage prod"
   },
   "dependencies": {
     "cors": "^2.8.5",
