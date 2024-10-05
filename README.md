@@ -23,6 +23,32 @@ Javascript Version: [Serverless Framework Node Express API on AWS in JS](https:/
 
 ## Usage
 
+### Setup AWS Credentials
+
+You will need an IAM credentials for Serverless Framework to deploy AWS Lambda Function or any resources.
+
+#### On Mac
+
+Create a AWS credentials file (If you don't have it already):
+
+```
+sudo nano ~/.aws/credentials
+```
+
+and then, put your IAM `Access Key` and `Secret Access Key` in there like so:
+
+```
+[default]
+aws_access_key_id=AKIAXXXXXXXXXXXXXXXX
+aws_secret_access_key=pvLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+#### On Windows
+
+The default location of the `credentials` file in Windows is `C:\Users\USERNAME\.aws\credentials`.
+
+Done. In this way, you can have multiple IAM credentials for different AWS accounts.
+
 ### Deployment
 
 Install dependencies with:
@@ -37,7 +63,8 @@ and then deploy with:
 npm run deploy:dev
 ```
 
-Under the hood it uses `serverless deploy --stage dev` command to deploy to dev environment
+Under the hood it uses `serverless deploy --stage dev` command to deploy to dev environment. You can use
+`npm` or `yarn`.
 
 After running deploy, you should see output similar to:
 
@@ -78,7 +105,7 @@ The easy and quick way to develop and test your function is to use the `serve` c
 npm run serve
 ```
 
-This will start a local server emulates the AWS Lambda function and receive your requests from `http://localhost:3000/`, allowing you to interact with your function locally as if it were running local nodejs server. Under the hood, it uses `serverless offline start` command from Serverless Offline and Watcher Plugin.
+This will start a local server emulating the AWS Lambda function and receive your requests from `http://localhost:3000/`, allowing you to interact with your function locally as if it were running local nodejs server. Under the hood, it uses `serverless offline start` command from Serverless Offline and Watcher Plugin.
 
 Now you can invoke the function as before, but this time the function will be executed locally. Now you can develop your function locally, invoke it, and see the results immediately without having to re-deploy.
 
@@ -185,7 +212,7 @@ This file defines the main routing logic for the Express.js application. It cont
 
 This routing file is modular and can easily be extended by adding more routes or integrating external route modules as the application grows.
 
-## src/core/getSum.js
+## src/core/getSum.ts
 
 This file contains the core logic for the `getSum` function, which calculates the sum of two numbers and handles the response for the corresponding API route.
 
@@ -197,7 +224,7 @@ This file contains the core logic for the `getSum` function, which calculates th
 
 - **Custom Error Handling**:
 
-  - If the sum calculation fails, the `getSum` function throws a custom error using the `createError()` function from `error.js`, providing a descriptive error message and a status code (500 in this case).
+  - If the sum calculation fails, the `getSum` function throws a custom error using the `createError()` function from `error.ts`, providing a descriptive error message and a status code (500 in this case).
 
 - **Success Response**:
 
