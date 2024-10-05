@@ -43,11 +43,12 @@ aws_access_key_id=AKIAXXXXXXXXXXXXXXXX
 aws_secret_access_key=pvLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
+Done. In this way, you can have multiple IAM credentials for different AWS accounts, and you can deploy
+AWS resources by switching account profiles easily.
+
 #### On Windows
 
-The default location of the `credentials` file in Windows is `C:\Users\USERNAME\.aws\credentials`.
-
-Done. In this way, you can have multiple IAM credentials for different AWS accounts.
+The default location of the `credentials` file is `C:\Users\USERNAME\.aws\credentials`.
 
 ### Deployment
 
