@@ -43,6 +43,8 @@ aws_access_key_id=AKIAXXXXXXXXXXXXXXXX
 aws_secret_access_key=pvLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
+finally, press `Ctrl+X`, then `Y` and hit `return`/`enter` to save the file.
+
 Done. In this way, you can have multiple IAM credentials for different AWS accounts, and you can deploy
 AWS resources by switching account profiles easily.
 
