@@ -108,7 +108,7 @@ After deployment, if you want to remove deployed resources like AWS Lambda funct
 npm run destroy:dev
 ```
 
-Under the hood it uses `serverless destroy --stage dev` command to deploy to dev environment. It will remove every resources from the specified environment.
+Under the hood it uses `serverless destroy --stage dev` command to destroy to dev environment. It will remove every resources from the specified environment.
 
 ### Local development
 
