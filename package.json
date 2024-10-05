@@ -1,0 +1,39 @@
+{
+  "name": "sls-aws-nodejs-express-ts-lambda",
+  "version": "1.0.0",
+  "description": "A boilerplate project for AWS Lambda Function Deployment with Serverless Framework with Node and Express in TS",
+  "main": "handler.ts",
+  "scripts": {
+    "serve": "npx serverless offline start",
+    "dev": "npx serverless dev",
+    "deploy:dev": "npx serverless deploy --stage dev",
+    "deploy:prod": "npx serverless deploy --stage prod"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "serverless": "^4.4.4",
+    "serverless-offline": "^14.3.2",
+    "serverless-offline-watcher": "^1.1.0"
+  },
+  "author": {
+    "name": "Fahim Uddin",
+    "email": "fahimuddin@brillmark.com",
+    "url": "https://www.brillmark.com/author/fahim_brill/"
+  },
+  "bugs": {
+    "url": "https://github.com/brillmarkllc/sls-aws-nodejs-express-ts-lambda/issues"
+  },
+  "private": true,
+  "homepage": "https://github.com/brillmarkllc/sls-aws-nodejs-express-ts-lambda",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brillmarkllc/sls-aws-nodejs-express-ts-lambda/tree/main"
+  },
+  "license": "MIT"
+}

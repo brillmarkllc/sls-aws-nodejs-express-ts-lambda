@@ -1,0 +1,5 @@
+node_modules
+.serverless
+.env
+yarn.lock
+package-lock.json

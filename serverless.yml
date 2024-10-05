@@ -1,0 +1,64 @@
+service: sls-aws-nodejs-express-ts-lambda # Name of the service/project
+
+provider:
+  # Specifies AWS as the cloud provider and configures the environment
+  # - Uses Node.js v20 runtime for Lambda functions
+  # - Deployment region is set to US East (us-east-1)
+  # - Uses the default AWS credentials profile
+  # - The 'stage' (environment) is set dynamically, defaulting to 'dev'
+  # - CORS is enabled for HTTP API
+  # - Tags are added to track resources in AWS with details like executer, environment, project scope, and purpose
+  name: aws
+  runtime: nodejs20.x
+  region: us-east-1
+  profile: default
+  stage: ${opt:stage, 'dev'}
+  httpApi:
+    cors: true
+  tags:
+    Executer: Deployer Name
+    Environment: ${self:provider.stage}
+    Scope: Project Name
+    Purpose: Description or Purpose of the Project
+    Owner: BrillMark LLC
+  environment:
+    BASE_URL: ${env:BASE_URL} # Loads the BASE_URL environment variable from the .env file
+
+package:
+  # Packages Lambda functions individually for better performance and reduced deployment size
+  individually: true
+
+functions:
+  # Defines the Lambda functions, with details on memory, timeout, and HTTP API event triggers
+  # - 'api' function uses a handler located at 'handler.handler'
+  # - Allocates 512MB memory and sets a 29-second timeout (max allowed for AWS Lambda functions triggered by API Gateway)
+  # - HTTP API event triggers the function for all routes ("*")
+  api:
+    handler: handler.handler
+    description: My First Lambda Function
+    memorySize: 512
+    timeout: 29
+    events:
+      - httpApi: "*"
+
+plugins:
+  # Specifies plugins for local development
+  # - serverless-offline: Emulates AWS API Gateway and Lambda for local testing
+  # - serverless-offline-watcher: Watches for file changes and triggers function reloads
+  - serverless-offline
+  - serverless-offline-watcher
+
+custom:
+  # Configuration for the serverless-offline-watcher plugin
+  # - Watches files in the 'src' folder and runs a custom command on changes
+  # - Second hook triggers offline function reloads when code is updated
+  serverless-offline-watcher:
+    - path:
+        - src/**/**
+      command:
+        "echo received $WATCHER_EVENT_TYPE event for $WATCHER_EVENT_PATH"
+        # Logs event type and file path when a file is changed
+    - path:
+        - src/**/*
+      hook:
+        - offline:functionsUpdated # Hook to reload functions when changes are detected
